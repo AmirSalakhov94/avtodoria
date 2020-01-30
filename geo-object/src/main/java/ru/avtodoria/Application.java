@@ -12,7 +12,6 @@ import javax.annotation.PostConstruct;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 
-//@AutoConfigureWireMock
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -47,27 +46,5 @@ public class Application implements CommandLineRunner {
                 .withHeader(authHeaderName, equalTo(authHeaderValue))
                 .willReturn(ok()
                         .withTransformers("my-response-transformer")));
-//        stubFor(get(urlMatching("/geo/[0-9]+?"))
-//                .withHeader(authHeaderName, equalTo(authHeaderValue))
-//                .willReturn(ok()
-//                        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-//                        .withBody("{\n" +
-//                                "    \"id\": \"{{request.path.[1]}}\",\n" +
-//                                "    \"lat\": \"" + lat + "\",\n" +
-//                                "    \"lgt\": \"" + lg"ru.avtodoria.Application.ExampleTransformer"t + "\"\n" +
-//                                "}")
-//                        .withTransformers("response-template")))
-//                .setPersistent(false);
-//        stubFor(get(urlMatching("/geo/[0-9]+?"))
-//                .withHeader(authHeaderName, equalTo(authHeaderValue))
-//                .willReturn(ok()
-//                        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-//                        .withBody("{\n" +
-//                                "    \"id\": \"{{request.path.[1]}}\",\n" +
-//                                "    \"lat\": \"" + lat + "\",\n" +
-//                                "    \"lgt\": \"" + lgt + "\"\n" +
-//                                "}")
-//                        .withTransformers("response-template")))
-//                .setPersistent(false);
     }
 }
