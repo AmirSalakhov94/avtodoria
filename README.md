@@ -11,4 +11,4 @@
 
 Микросервисы:
 Application - 1 сервис
-GeoApplication - 2 сервисhttps://github.com/AmirSalakhov94/avtodoria.git
+GeoApplication - 2 сервис
