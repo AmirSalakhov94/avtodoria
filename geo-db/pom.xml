@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>geo</artifactId>
+        <groupId>ru.avtodoria</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Geo db module</name>
+
+    <artifactId>geo-db</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <postgres.sql.driver.version>42.2.9</postgres.sql.driver.version>
+        <liquibase.version>3.5.0</liquibase.version>
+        <liquibase.host>172.17.0.2</liquibase.host>
+        <liquibase.port>5432</liquibase.port>
+        <liquibase.user>geo_user</liquibase.user>
+        <liquibase.password>geo_psw</liquibase.password>
+        <liquibase.schema>geo</liquibase.schema>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
+                <configuration>
+                    <outputFileEncoding>UTF-8</outputFileEncoding>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://${liquibase.host}:${liquibase.port}/postgres?currentSchema=${liquibase.schema}</url>
+                    <username>${liquibase.user}</username>
+                    <password>${liquibase.password}</password>
+                    <defaultSchemaName>${liquibase.schema}</defaultSchemaName>
+                    <changeLogFile>database_${liquibase.user}_changelog.xml</changeLogFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.8.5</version>
+        </dependency>
+    </dependencies>
+
+</project>

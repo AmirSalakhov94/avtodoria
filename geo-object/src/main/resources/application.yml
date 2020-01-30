@@ -1,0 +1,18 @@
+server:
+  port:8888
+
+#wiremock:
+#  server:
+#    port: 8888
+
+spring:
+  main:
+    web-application-type: none
+  application:
+    name: geo-bject
+
+geo:
+  auth:
+    tokenName: AUTH_API_KEY
+    tokenValue: dssadfsadfwe34234zxc
+

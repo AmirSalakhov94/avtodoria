@@ -1,0 +1,39 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  datasource:
+    hikari:
+      #      minimum-idle: 1
+      #      maximum-pool-size: 5
+      #      pool-name: yourPoolName
+      auto-commit: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://172.17.0.2:5432/postgres?currentSchema=geo
+    username: geo_user
+    password: geo_psw
+    type: com.zaxxer.hikari.HikariDataSource
+  liquibase:
+    enabled: true
+    change-log: classpath:db/database_geo_changelog.xml
+    user: geo_user
+    password: geo_psw
+    url: jdbc:postgresql://172.17.0.2:5432/postgres
+    default-schema: geo
+
+hikari:
+  ds:
+    dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+    databaseName: ${POSTGRES_DATABASE:postgres}
+    serverName: ${POSTGRES_SERVER:172.17.0.2}
+    user: ${POSTGRES_USER:geo_user}
+    password: ${POSTGRES_PASSWORD:geo_psw}
+
+geo:
+  object:
+    url: http://localhost:8888
+  auth:
+    tokenName: AUTH_API_KEY
+    tokenValue: dssadfsadfwe34234zxc

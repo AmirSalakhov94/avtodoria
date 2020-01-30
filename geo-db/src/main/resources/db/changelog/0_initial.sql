@@ -1,0 +1,11 @@
+-- create user
+CREATE USER geo_user WITH PASSWORD 'geo_psw';
+
+-- grant privileges
+
+GRANT CREATE ON DATABASE postgres TO geo_user;
+GRANT CONNECT ON DATABASE postgres TO geo_user;
+
+GRANT ALL PRIVILEGES ON SCHEMA geo TO geo_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA geo TO geo_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA geo TO geo_user;

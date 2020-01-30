@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS GEO_LOCATION;
+CREATE TABLE GEO_LOCATION (
+    id          BIGINT  AUTO_INCREMENT PRIMARY KEY,
+    lat         DOUBLE,
+    lgt         DOUBLE,
+    time        TIMESTAMP
+);
